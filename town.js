@@ -80,14 +80,14 @@ class Town {
 
     finishProgress(varName, expGain) {
         // return if capped, for performance
-        if (this[`exp${varName}`] === 505000) {
+        if (this[`exp${varName}`] === 5000500000) {
             if (options.pauseOnComplete) pauseGame(true, "Progress complete! (Game paused)");
             else return;
         }
 
         const prevLevel = this.getLevel(varName);
-        if (this[`exp${varName}`] + expGain > 505000) {
-            this[`exp${varName}`] = 505000;
+        if (this[`exp${varName}`] + expGain > 5000500000) {
+            this[`exp${varName}`] = 5000500000;
         } else {
             this[`exp${varName}`] += expGain;
         }
