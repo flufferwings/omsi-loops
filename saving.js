@@ -272,6 +272,8 @@ const storyFlags = {
     suppliesBought: false,
     suppliesBoughtWithoutHaggling: false,
     showHeld: false,
+    showHeldRep: false,
+    showHeldCombat: false,
     smallDungeonAttempted: false,
     satByWaterfall: false,
     dexterityTrained: false,
