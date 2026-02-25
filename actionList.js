@@ -1605,7 +1605,7 @@ Action.CatchMonsters = new MultipartAction("Catch Monsters", {
         return resources.reputation >= 5;
     },
     loopCost(segment, loopCounter = towns[0].CatchLoopCounter) {
-        return Math.pow(1.2 + loopCounter/100, loopCounter) * 20000;
+        return Math.pow(1.2 + loopCounter/300, Math.floor(loopCounter/3)) * 20000;
     },
     tickProgress(_offset, _loopCounter, totalCompletions = towns[0].totalCatch) {
         return getSkillLevel("Combat") * Math.sqrt(1 + totalCompletions / 100);
