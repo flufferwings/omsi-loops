@@ -1630,7 +1630,7 @@ Action.CatchMonsters = new MultipartAction("Catch Monsters", {
     //}
 });
 
-Action.HoldShow = new Action("Put on a Show", {
+Action.PutOnAShow = new Action("Put On A Show", {
     type: "normal",
     expMult: 1.5,
     townNum: 0,
