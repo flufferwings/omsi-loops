@@ -1611,7 +1611,7 @@ Action.CatchMonsters = new MultipartAction("Catch Monsters", {
         return getSkillLevel("Combat") * Math.sqrt(1 + totalCompletions / 100);
     },
     loopsFinished() {
-        addResource("monster", 1);
+        addResource("monsters", 1);
     },
     getPartName(loopCounter = towns[0].CatchLoopCounter) {
         return `${_txt(`actions>${getXMLName(this.name)}>label_part`)} ${numberToWords(Math.floor((loopCounter + 0.0001) / this.segments + 1))}`;
