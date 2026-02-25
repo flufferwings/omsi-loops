@@ -129,6 +129,7 @@ let shouldRestart = true;
 let resources = {
     gold: 0,
     reputation: 0,
+    monsters: 0,
     herbs: 0,
     hide: 0,
     potions: 0,
@@ -270,6 +271,7 @@ const storyFlags = {
     strengthTrained: false,
     suppliesBought: false,
     suppliesBoughtWithoutHaggling: false,
+    showHeld: false,
     smallDungeonAttempted: false,
     satByWaterfall: false,
     dexterityTrained: false,
