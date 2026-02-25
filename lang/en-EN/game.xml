@@ -2006,6 +2006,29 @@
             <story_6><![CDATA[<b>10,000 Monsters killed:</b>⮀ You only move the barest amount necessary to avoid getting hit. At this point you know all their movements like the back of your hand, and there's always a gap in their attack pattern. You're glad they're too dumb to coordinate with each other.]]></story_6>
             <story_7><![CDATA[<b>20,000 Monsters killed:</b>⮀ The most efficient way to dodge, and the most efficient way to kill. You don't need ambushes anymore, you can wade into battle against any number of monsters and kill them all one after another, always inches away from death but never making a single misstep.]]></story_7>
         </fight_monsters>
+		<catch_monsters>
+            <label>Catch Monsters</label>
+            <label_done>Caught</label_done>
+            <label_part>Monster</label_part>
+            <tooltip><![CDATA[
+            Borrow rope from the townspeople and go out to trap monsters without killing them.<br>Healing is always 3 parts, each with a main stat - Diagnose (Per), Treat (Int), Inform (Cha).<br>Gives (combat skill) * (1 + main stat / 100) * sqrt(1 + times completed / 100) * (original mana cost / actual mana cost) progress points per mana.<br>Requires a reputation of 5 or above.<br>Unlocked at 30 Combat skill.<br>Gives 1 captured monster upon completion.
+			]]></tooltip>
+			<story_1><![CDATA[<b>Monster caught:</b>⮀ You manage to track down a particularly unwell specimen among the Demon Rabbits near the village, bait it into a spot where it can't just run past you, and wrestle it down to the ground. The townsfolk don't quite seem to know what to think when they see you dragging it behind you, still hissing, on a rapidly fraying rope, but they at least don't seem to plan on making you get rid of it. You're decent at fighting these things, maybe fighting one dramatically in the town square can give you some extra gold.]]></story_1>
+			<segment_names>
+				<name>Locate</name>
+				<name>Corner</name>
+				<name>Restrain</name>
+			</segment_names>
+        </catch_monsters>
+		<put_on_a_show>
+		<label>Put On A Show</label>
+		<tooltip><![CDATA[
+		Let the town know that you're about to hold a fight against the monsters you captured in the town square, then charge admissions.<br>Costs one monster.<br>Gives gold equal to your reputation, and reputation equal to sqrt(combat/10).
+		    ]]></tooltip>
+            <story_1><![CDATA[<b>Show held:</b>⮀ You don't exactly get all of the town to arrive, or anything like it, but you make some decent money off of it. You also seem to have gotten your name out a bit more, because you hear people talking about you more than in the average loop. Doing this more might be a good way to get your name out in other town before you even get there.]]></story_1>
+	    <story_2><![CDATA[<b>Show held with 50 reputation:</b>⮀ Making yourself the most well-known person in the entire town before you started burning through your limited monster supply took a lot of work, but it certainly seems to have paid off. You've found that it's hard to get anyone to show up if you charge more than a single gold coin per person. You've also found that it's entirely possible to get people coming to the town just to attend. It's still hard to do more than break even on the mana it takes to do all this, but a job's a job, and a job that makes people like you is a very good one.]]></story_2>
+	    <story_3><![CDATA[<b>Show held with 250 Combat:</b>⮀ The better you get at fighting, the more exciting you can get the show to become. Near misses, perfect showboating hits, moment that look like you're about to be flattened; things that would once have become risky to include grow easy. It doesn't help you charge much more for the shows, but it absolutely helps pull more people for the next one. You wake up the next morning to find someone you've never met before, who travelled to Beginnersville just to see if you would hold another show tomorrow.]]></story_3>
+		</put_on_a_show>
         <small_dungeon>
             <label>Small Dungeon</label>
             <label_done>Looted</label_done>
