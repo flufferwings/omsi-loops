@@ -1576,6 +1576,104 @@ Action.FightMonsters = new MultipartAction("Fight Monsters", {
     },
 });
 
+Action.CatchMonsters = new MultipartAction("Catch Monsters", {
+    type: "multipart",
+    expMult: 1,
+    townNum: 0,
+    varName: "Catch",
+    storyReqs(storyNum) {
+        switch (storyNum) {
+            case 1:
+                return towns[0].totalCatch >= 1;
+        }
+        return false;
+    },
+    stats: {
+        Per: 0.3,
+        Int: 0.3,
+        Str: 0.3,
+        Luck: 0.1
+    },
+    skills: {
+        Combat: 100
+    },
+    loopStats: ["Per", "Int", "Str"],
+    manaCost() {
+        return 10000;
+    },
+    canStart() {
+        return resources.reputation >= 5;
+    },
+    loopCost(segment, loopCounter = towns[0].CatchLoopCounter) {
+        return Math.pow(1.2 + loopCounter/100, loopCounter) * 20000;
+    },
+    tickProgress(_offset, _loopCounter, totalCompletions = towns[0].totalCatch) {
+        return getSkillLevel("Combat") * Math.sqrt(1 + totalCompletions / 100);
+    },
+    loopsFinished() {
+        addResource("monster", 1);
+    },
+    getPartName(loopCounter = towns[0].CatchLoopCounter) {
+        return `${_txt(`actions>${getXMLName(this.name)}>label_part`)} ${numberToWords(Math.floor((loopCounter + 0.0001) / this.segments + 1))}`;
+    },
+    visible() {
+        return towns[0].getLevel("Secrets") >= 100;
+    },
+    unlocked() {
+        return getSkillLevel("Combat") >= 30;
+    },
+    finish() {
+        handleSkillExp(this.skills);
+    },
+    //story(completed) {
+    //    if (towns[0].HealLoopCounter / 3 + 1 >= 10) setStoryFlag("heal10PatientsInALoop");
+    //}
+});
+
+Action.HoldShow = new Action("Put on a Show", {
+    type: "normal",
+    expMult: 1.5,
+    townNum: 0,
+    storyReqs(storyNum) {
+        switch(storyNum){
+            case 1: return storyFlags.showHeld;
+	    case 2: return storyFlags.showHeldRep;
+	    case 3: return storyFlags.showHeldCombat;
+        }
+    },
+    stats: {
+        Cha: 0.5,
+        Dex: 0.3,
+        Con: 0.1,
+        Spd: 0.1
+    },
+    canStart() {
+        return resources.monsters >= 1;
+    },
+    cost() {
+        addResource("monsters", -1);
+    },
+    manaCost() {
+        return 3000;
+    },
+    visible() {
+        return towns[0].getLevel("Secrets") >= 100;
+    },
+    unlocked() {
+        return towns[0].getLevel("Secrets") >= 100;
+    },
+    finish() {
+        setStoryFlag("showHeld");
+	addResource("reputation", Math.floor(Math.sqrt(getSkillLevel("Combat")/10)));
+        addResource("gold", resources.reputation);
+    },
+    story(completed) {
+	setStoryFlag(showHeld);
+	if (resources.reputation >= 50) setStoryFlag(showHeldRep);
+	if (getSkillLevel("Combat") >= 250) setStoryFlag(showHeldCombat);
+    },
+});
+
 Action.SmallDungeon = new DungeonAction("Small Dungeon", 0, {
     type: "multipart",
     expMult: 1,
