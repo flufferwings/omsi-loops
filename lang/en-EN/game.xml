@@ -807,6 +807,11 @@
             <title>Reputation:</title>
             <desc>The influence you have over the people in town.</desc>
         </resource>
+		<resource id="monsters" initially_hidden="true">
+			<label>Monsters</label>
+			<title>Monsters:</title>
+			<desc>Random Beginnersville monsters, tied down by rope.</desc>
+		</resource>
         <resource id="herbs" initially_hidden="true">
             <label>Herbs</label>
             <title>Herbs:</title>
