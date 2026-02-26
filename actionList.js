@@ -1663,14 +1663,14 @@ Action.PutOnAShow = new Action("Put On A Show", {
         return towns[0].getLevel("Secrets") >= 100;
     },
     finish() {
-        setStoryFlag("showHeld");
+        //setStoryFlag("showHeld");
 	addResource("reputation", Math.floor(Math.sqrt(getSkillLevel("Combat")/10)));
         addResource("gold", resources.reputation);
     },
     story(completed) {
-	setStoryFlag(showHeld);
-	if (resources.reputation >= 50) setStoryFlag(showHeldRep);
-	if (getSkillLevel("Combat") >= 250) setStoryFlag(showHeldCombat);
+	setStoryFlag("showHeld");
+	if (resources.reputation >= 50) setStoryFlag("showHeldRep");
+	if (getSkillLevel("Combat") >= 250) setStoryFlag("showHeldCombat");
     },
 });
 
