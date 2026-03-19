@@ -874,7 +874,7 @@ function adjustPots() {
 }
 function adjustLocks() {
     let town = towns[0];
-    let baseLocks = Math.round(town.getLevel("Wander") * adjustContentFromPrestige());
+    let baseLocks = Math.round((town.getLevel("Wander") + town.getLevel("Interact")) * adjustContentFromPrestige());
     town.totalLocks = Math.floor(baseLocks * getSkillMod("Spatiomancy", 100, 300, .5) + baseLocks * getSurveyBonus(town));
 }
 
@@ -1112,7 +1112,7 @@ Action.MeetPeople = new Action("Meet People", {
 });
 function adjustSQuests() {
     let town = towns[0];
-    let baseSQuests = Math.round(town.getLevel("Met") * adjustContentFromPrestige());
+    let baseSQuests = Math.round((town.getLevel("Met") + town.getLevel("Interact")) * adjustContentFromPrestige());
     town.totalSQuests = Math.floor(baseSQuests * getSkillMod("Spatiomancy", 200, 400, .5) + baseSQuests * getSurveyBonus(town));
 }
 
@@ -1247,7 +1247,7 @@ Action.Investigate = new Action("Investigate", {
 });
 function adjustLQuests() {
     let town = towns[0];
-    let baseLQuests = Math.round(town.getLevel("Secrets") / 2 * adjustContentFromPrestige());
+    let baseLQuests = Math.round((town.getLevel("Secrets") + town.getLevel("Interact")) / 2 * adjustContentFromPrestige());
     town.totalLQuests = Math.floor(baseLQuests * getSkillMod("Spatiomancy", 300, 500, .5) + baseLQuests * getSurveyBonus(town));
 }
 
@@ -1857,6 +1857,171 @@ Action.Haggle = new Action("Haggle", {
         if (completed >= 16) setStoryFlag("haggle16TimesInALoop");
         setStoryFlag("haggle");
     }
+});
+
+Action.SetUpShop = new Action("Set Up Shop", {
+    type: "normal",
+    expMult: 1,
+    townNum: 0,
+    storyReqs(storyNum) {
+        switch(storyNum){
+            case 1: return storyFlags.setUpShop;
+        }
+    },
+    stats: {
+        Str: 0.5,
+        Con: 0.3,
+        Per: 0.2
+    },
+    canStart() {
+        return (timer > 450000 && resources.houses === 0);
+    },
+    cost() {
+        
+    },
+    manaCost() {
+        return 10000;
+    },
+    visible() {
+        return towns[0].getLevel("Secrets") >= 100;
+    },
+    unlocked() {
+        return towns[0].getLevel("Secrets") >= 100;
+    },
+    finish() {
+        setStoryFlag("setUpShop");
+        addResource("houses", 1);
+    },
+    story(completed) {
+	
+    },
+});
+
+Action.ResellStartingGear = new Action("Resell Starting Gear", {
+    type: "normal",
+    expMult: 1,
+    townNum: 0,
+    storyReqs(storyNum) {
+        switch(storyNum){
+            case 1: return storyFlags.resold;
+	    case 2: return storyFlags.resoldNoGold;
+	    case 3: return storyFlags.resold100Gold
+        }
+    },
+    stats: {
+        Str: 0.5,
+        Con: 0.3,
+        Per: 0.2
+    },
+    canStart() {
+        return (timer > 450000 && resources.houses >= 1);
+    },
+    cost() {
+        
+    },
+    manaCost() {
+        return 1000;
+    },
+    visible() {
+        return storyFlags.setUpShop;
+    },
+    unlocked() {
+        return storyFlags.setUpShop;
+    },
+    finish() {
+        setStoryFlag("resold");
+        addResource("gold", Math.min(Math.floor(timer/10000)-towns[0].timesResold, 0));
+	towns[0].timesResold += 1;
+    },
+    story(completed) {
+	if (timer/10000-completed >= 99) setStoryFlag("resold100Gold");
+	if (timer/10000-completed <= 0) setStoryFlag(resoldNoGold);
+    },
+});
+
+Action.GiveFetchQuests = new Action("Give Fetch Quests", {
+    type: "normal",
+    expMult: 1,
+    townNum: 0,
+    storyReqs(storyNum) {
+        switch(storyNum){
+            case 1: return storyFlags.fetchQuestGiven;
+	    case 2: return storyFlags.give50FetchQuests;
+
+        }
+    },
+    stats: {
+        Cha: 0.6,
+        Con: 0.2,
+        Soul: 0.2
+    },
+    canStart() {
+        return (timer > 450000 && resources.houses >= 1 && resources.gold >= 20);
+    },
+    cost() {
+        
+    },
+    manaCost() {
+        return 1000;
+    },
+    goldCost() {
+	return 20;
+    },
+    visible() {
+        return storyFlags.setUpShop;
+    },
+    unlocked() {
+        return storyFlags.setUpShop;
+    },
+    finish() {
+        setStoryFlag("fetchQuestGiven");
+	addResource("gold", -this.goldCost());
+        addResource("exoticHerbs", 1);
+    },
+    story(completed) {
+	if (completed >= 50) setStoryFlag("give50FetchQuests");
+    },
+});
+
+Action.InteractWithVilagers = new Action("Interact With Villagers", {
+    type: "progress",
+    expMult: 1,
+    townNum: 0,
+    varName: "Interact",
+    storyReqs(storyNum) {
+        switch (storyNum) {
+            case 1:
+                return towns[0].getLevel(this.varName) >= 1;
+            case 2:
+                return towns[0].getLevel(this.varName) >= 50;
+            case 3:
+                return towns[0].getLevel(this.varName) >= 100;
+            case 4:
+                return towns[0].getLevel(this.varName) >= 250;
+            case 5:
+                return towns[0].getLevel(this.varName) >= 500;
+            case 6:
+                return towns[0].getLevel(this.varName) >= 1000;
+        }
+        return false;
+    },
+    stats: {
+        Int: 0.1,
+        Cha: 0.8,
+        Soul: 0.1
+    },
+    manaCost() {
+        return 1000;
+    },
+    visible() {
+        return storyFlags.setUpShop;
+    },
+    unlocked() {
+        return storyFlags.setUpShop;
+    },
+    finish() {
+        towns[0].finishProgress(this.varName, 100);
+    },
 });
 
 Action.StartJourney = new Action("Start Journey", {
