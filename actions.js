@@ -293,6 +293,7 @@ class Actions {
         this.currentAction = null;
         curTown = 0;
         towns[0].suppliesCost = 300;
+		towns[0].timesResold = 0;
         view.requestUpdate("updateResource","supplies");
         curAdvGuildSegment = 0;
         curCraftGuildSegment = 0;
