@@ -2040,7 +2040,7 @@
 	    <story_3><![CDATA[<b>Show held with 250 Combat:</b>⮀ The better you get at fighting, the more exciting you can get the show to become. Near misses, perfect showboating hits, moment that look like you're about to be flattened; things that would once have become risky to include grow easy. It doesn't help you charge much more for the shows, but it absolutely helps pull more people for the next one. You wake up the next morning to find someone you've never met before, who travelled to Beginnersville just to see if you would hold another show tomorrow.]]></story_3>
 		</put_on_a_show>
 		<set_up_shop>
-		<label>Put On A Show</label>
+		<label>Set Up Shop</label>
 		<tooltip><![CDATA[
 		Find an unoccupied area near the edge of the town and put together a building to call your own. You'll be treated as a resident once you do, and maybe you can sell stuff.<br>Must have spent 2.5 hours of base time this loop.
 		    ]]></tooltip>
