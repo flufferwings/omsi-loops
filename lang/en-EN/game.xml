@@ -2049,7 +2049,7 @@
 		<resell_starting_gear>
 			<label>Resell Starting Gear</label>
 			<tooltip><![CDATA[
-			Collect the armor and weapons off the dead off the ground and resell them.<br>Gives 1 more gold for every 10 minutes of base time passed. Gives 1 less gold for every time done in a loop.<br>Must have set up a shop.
+			Collect the armor and weapons off the dead off the ground and resell them.<br>Gives 3 more gold for every 10 minutes of base time passed. Gives 1 less gold for every time done in a loop.<br>Must have set up a shop.
 		    	]]></tooltip>
             <story_1><![CDATA[<b>Gear resold:</b>⮀ You go around the fields finding equipment in varying states of freshness and disrepair, carry a few armloads back to town, and sell it to newbies at a discount price. It's pretty gruesome work, but it's comforting to remind yourself that you're not <i>actually</i> robbing the dead, since the people you're collecting them will be back the next loop. And it gives a lot of gold, so it all balances out.]]></story_1>
 	    	<story_2><![CDATA[<b>Gear resold for no gold:</b>⮀ You've picked out all the good, mid, and decent gear already and are coming back around for the sixth-rate stuff. You find two things: nobody really wants to buy headless spears or rotten shields you can scrape with a fingernail, and in any case, you've completely saturated the market with the earlier rounds. You'll have to wait for deaths and arrivals to accrue before resuming.]]></story_2>
@@ -2058,13 +2058,14 @@
 		<give_fetch_quests>
 			<label>Give Fetch Quests</label>
 			<tooltip><![CDATA[
-			Somehow, there's items around Beginnersville that just don't exist for you. But you can pay someone else to find them, somehow.<br>Must have set up a shop.
+			Somehow, there's items around Beginnersville that just don't exist for you. But you can pay someone else to find them, somehow.<br>Costs 20 gold. Gives 1 item. Must have set up a shop.
 		    	]]></tooltip>
             <story_1><![CDATA[<b>Fetch quest given:</b>⮀ One of the first things you've found out after setting up shop here is that there are some items that can only be gotten through the city's adventuring economy. They don't actually exist on their own in the surrounding areas, but they can populate if, and only if, someone who doesn't get to keep the is being paid to gather them. Also, everyone has some specific set of items, seemingly randomly assigned, that they can give valid quests for. Yours appears to be rare herbs and nothing else.]]></story_1>
 	    	<story_2><![CDATA[<b>50 fetch quests given in a loop:</b>⮀ One good thing about the annoyingly restrictive quest mechanic is that there's at least no limit to how many you can hand out. By this point you've poured enough money into these quests that your shop has become one of the places people in need of gold line up. Now all you have to do is figure out what these things are even used for.]]></story_2>
 		</give_fetch_quests>
 		<interact_with_villagers>
 			<label>Interact With Villagers</label>
+			<label_done>Interactions Tested</label_done>
 			<tooltip><![CDATA[
 			Use your new role as an actual member of the village to find out things about the people living here that you never could as an outsider.<br>Must have set up a shop.
 		    	]]></tooltip>
