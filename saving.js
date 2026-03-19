@@ -130,7 +130,7 @@ let resources = {
     gold: 0,
     reputation: 0,
     monsters: 0,
-    exoticHerbs,
+    exoticHerbs: 0,
     herbs: 0,
     hide: 0,
     potions: 0,
