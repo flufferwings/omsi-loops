@@ -817,6 +817,11 @@
             <title>Herbs:</title>
             <desc>The beneficial plants you've found.</desc>
         </resource>
+		<resource id="exoticHerbs" initially_hidden="true">
+            <label>Exotic Herbs</label>
+            <title>Exotic Herbs:</title>
+            <desc>Anomalous plants acquirable only through giving fetch quests.</desc>
+        </resource>
         <resource id="hide" initially_hidden="true">
             <label>Hide</label>
             <title>Hide:</title>
