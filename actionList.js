@@ -1983,7 +1983,7 @@ Action.GiveFetchQuests = new Action("Give Fetch Quests", {
     },
 });
 
-Action.InteractWithVilagers = new Action("Interact With Villagers", {
+Action.InteractWithVillagers = new Action("Interact With Villagers", {
     type: "progress",
     expMult: 1,
     townNum: 0,
