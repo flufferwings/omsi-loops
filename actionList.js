@@ -874,7 +874,7 @@ function adjustPots() {
 }
 function adjustLocks() {
     let town = towns[0];
-    let baseLocks = Math.round((town.getLevel("Wander") + town.getLevel("Interact")) * adjustContentFromPrestige());
+    let baseLocks = Math.round((town.getLevel("Wander") + town.getLevel("InteractWithVillagers")) * adjustContentFromPrestige());
     town.totalLocks = Math.floor(baseLocks * getSkillMod("Spatiomancy", 100, 300, .5) + baseLocks * getSurveyBonus(town));
 }
 
@@ -1112,7 +1112,7 @@ Action.MeetPeople = new Action("Meet People", {
 });
 function adjustSQuests() {
     let town = towns[0];
-    let baseSQuests = Math.round((town.getLevel("Met") + town.getLevel("Interact")) * adjustContentFromPrestige());
+    let baseSQuests = Math.round((town.getLevel("Met") + town.getLevel("InteractWithVillagers")) * adjustContentFromPrestige());
     town.totalSQuests = Math.floor(baseSQuests * getSkillMod("Spatiomancy", 200, 400, .5) + baseSQuests * getSurveyBonus(town));
 }
 
@@ -1247,7 +1247,7 @@ Action.Investigate = new Action("Investigate", {
 });
 function adjustLQuests() {
     let town = towns[0];
-    let baseLQuests = Math.round((town.getLevel("Secrets") + town.getLevel("Interact")) / 2 * adjustContentFromPrestige());
+    let baseLQuests = Math.round((town.getLevel("Secrets") + town.getLevel("InteractWithVillagers")) / 2 * adjustContentFromPrestige());
     town.totalLQuests = Math.floor(baseLQuests * getSkillMod("Spatiomancy", 300, 500, .5) + baseLQuests * getSurveyBonus(town));
 }
 
@@ -1987,7 +1987,7 @@ Action.InteractWithVilagers = new Action("Interact With Villagers", {
     type: "progress",
     expMult: 1,
     townNum: 0,
-    varName: "Interact",
+    //varName: "Interact",
     storyReqs(storyNum) {
         switch (storyNum) {
             case 1:
