@@ -1930,7 +1930,7 @@ Action.ResellStartingGear = new Action("Resell Starting Gear", {
     },
     finish() {
         setStoryFlag("resold");
-        addResource("gold", Math.min(Math.floor(timer/10000)-towns[0].timesResold, 0));
+        addResource("gold", Math.max(Math.floor(timer/10000)-towns[0].timesResold, 0));
 	towns[0].timesResold += 1;
     },
     story(completed) {
